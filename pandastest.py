@@ -1,8 +1,8 @@
 import pandas as pd
-df = pd.read_excel('basesalário.xlsx')
-# print(df.head())
-salarios = df['salário']
-mais5k = df[df['salário'] > 5000]
-mais13k = df[df['salário'] > 13000]
-print(mais5k[['nome', 'salário']])
-print(mais13k[['nome', 'salário']])
+df = pd.read_excel('polosaomiguel.xlsx')
+# print(df)
+BonusVip = df[(df['ponto gera'] > 1400) & (df['nível'] == 'VIP')]
+BonusMp = df[(df['ponto gera'] > 1000) & (df['nível'] == 'MP')]
+
+print(f' Os executivos MP que bateram o bonus são: {BonusMp[['executivos']]}')
+print(f'VIPs que ganharam bonus: {BonusVip[['executivos']]}')
