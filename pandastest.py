@@ -1,6 +1,13 @@
 import pandas as pd
 df = pd.read_excel('polosaomiguel.xlsx')
 
+df2 = pd.read_excel('faturamentoclientes.xlsx')
+print(df2)
+
+Faturamento10k = df2[df2['faturamento total'] >= 10000]
+print(Faturamento10k)
+Faturamento10k.to_excel('clientesfaturamento10k.xlsx', sheet_name='faturamento_atingido', index= False)
+
 BonusGeraMP = df[(df['ponto gera'] > 1000) & (df['nível'] == 'MP')]
 print('Bônus Meta GERA MP:')
 print(BonusGeraMP[['executivo','ponto gera']])
