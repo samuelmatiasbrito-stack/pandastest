@@ -1,4 +1,3 @@
-import pandas as pd
 from ClientsFaturament import Gera
 ConsultaGera = Gera()
 
@@ -10,22 +9,22 @@ while True:
         ConsultaFaturamento = input('(1) Base Faturamento Geral \n' \
         '(2) Base Faturamento acima de R$10.0000: ')
         if ConsultaFaturamento == '1':
-            print(ConsultaGera.faturamentototal())
+            print(ConsultaGera.obterfaturamento())
             pass
         elif ConsultaFaturamento == '2':
-            print(ConsultaGera.faturamento10k())
+            print(ConsultaGera.filtrarclientes10k())
             Import = input('Importar para uma planilha Excel externa? (1) Sim | (2) Não: ')
             if Import == '1':
                 NomeArquivo = input('Nome arquivo: ')
                 NomePlanilha = input('Nome Planilha: ')
                 print('salvando...')
-                ConsultaGera.faturamento10k().to_excel(f'{NomeArquivo}.xlsx', sheet_name=NomePlanilha, index=False)
+                ConsultaGera.filtrarclientes10k().to_excel(f'{NomeArquivo}.xlsx', sheet_name=NomePlanilha, index=False)
             pass
     elif Consulta == '2':
-        print(ConsultaGera.geratotal())
+        print(ConsultaGera.obtergera())
         pass
     elif Consulta == '3':
-        print(ConsultaGera.metam1())
+        print(ConsultaGera.obterm1())
         pass
     elif Consulta == '4':
         print('Saindo do Gera...')

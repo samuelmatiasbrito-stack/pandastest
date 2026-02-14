@@ -3,12 +3,11 @@ PoloGeraJaneiro = pd.read_excel('polosaomiguel.xlsx')
 ClientesJaneiro = pd.read_excel('faturamentoclientes.xlsx')
 
 class Gera:
-    def faturamentototal(self):
+    def obterfaturamento(self):
         return ClientesJaneiro[['executivo', 'id cliente', 'faturamento total']]
-    def faturamento10k(self):
-        Faturamento = ClientesJaneiro[ClientesJaneiro['faturamento total'] > 10000]
-        return Faturamento
-    def geratotal(self):
+    def filtrarclientes10k(self):
+        return ClientesJaneiro[ClientesJaneiro['faturamento total'] > 10000]
+    def obtergera(self):
         return PoloGeraJaneiro
-    def metam1(self):
+    def obterm1(self):
         return PoloGeraJaneiro[['executivo','nível', 'm1', 'm1 meta']]
