@@ -11,3 +11,6 @@ class Gera:
         return PoloGeraJaneiro
     def obterm1(self):
         return PoloGeraJaneiro[['executivo','nível', 'm1', 'm1 meta']]
+    def obterexecutivos(self):
+        return '\n'.join([f'({i}) {executivo}' for i, executivo in enumerate(PoloGeraJaneiro['executivo'], start=1)])
+    

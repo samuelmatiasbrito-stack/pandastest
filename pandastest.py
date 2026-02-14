@@ -7,7 +7,7 @@ while True:
 '(1) Faturamento dos clientes | (2) Base Gera | (3) Metas M1 | (4) Sair: ')
     if Consulta == '1':
         ConsultaFaturamento = input('(1) Base Faturamento Geral \n' \
-        '(2) Base Faturamento valor filtrado: ')
+        '(2) Base Faturamento com valor filtrado: ')
         if ConsultaFaturamento == '1':
             print(ConsultaGera.obterfaturamento())
             pass
@@ -22,7 +22,12 @@ while True:
                 ConsultaGera.filtrarfaturamento().to_excel(f'{NomeArquivo}.xlsx', sheet_name=NomePlanilha, index=False)
             pass
     elif Consulta == '2':
-        print(ConsultaGera.obtergera())
+        FiltrarExecutivo = input('Deseja filtrar algum executivo? (1) Sim | (2) Não: ')
+        if FiltrarExecutivo == '1':
+            print(ConsultaGera.obterexecutivos())
+
+        elif FiltrarExecutivo == '2':
+            print(ConsultaGera.obtergera())
         pass
     elif Consulta == '3':
         print(ConsultaGera.obterm1())
