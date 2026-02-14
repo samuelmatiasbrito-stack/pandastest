@@ -1,29 +1,35 @@
 import pandas as pd
-df = pd.read_excel('polosaomiguel.xlsx')
+from ClientsFaturament import Gera
+ConsultaGera = Gera()
 
-df2 = pd.read_excel('faturamentoclientes.xlsx')
-print(df2)
-
-Faturamento10k = df2[df2['faturamento total'] >= 10000]
-print(Faturamento10k)
-Faturamento10k.to_excel('clientesfaturamento10k.xlsx', sheet_name='faturamento_atingido', index= False)
-
-BonusGeraMP = df[(df['ponto gera'] > 1000) & (df['nível'] == 'MP')]
-print('Bônus Meta GERA MP:')
-print(BonusGeraMP[['executivo','ponto gera']])
-print('-' * 25)
-BonusGeraVIP = df[(df['ponto gera'] > 1400) & (df['nível'] == 'VIP')]
-print('Bônus Meta GERA VIP:')
-print(BonusGeraVIP[['executivo','ponto gera']])
-print('-' * 25)
-BonusM1Vip = df[(df['m1'] >= df['m1 meta']) & (df['nível'] == 'VIP')]
-print('Bônus Meta M1 VIP:')
-print(BonusM1Vip[['executivo','m1', 'm1 meta']])
-print('-' * 25)
-BonusM1MP = df[(df['m1'] >= df['m1 meta']) & (df['nível'] == 'MP')]
-print('Bônus Meta M1 VIP:')
-print(BonusM1MP[['executivo','m1', 'm1 meta']])
-
+while True:
+    Consulta = input('--Bem Vindo ao Gera-- \n'
+                     'Qual consulta você quer realizar? \n' \
+'(1) Faturamento dos clientes | (2) Base Gera | (3) Metas M1 | (4) Sair: ')
+    if Consulta == '1':
+        ConsultaFaturamento = input('(1) Base Faturamento Geral \n' \
+        '(2) Base Faturamento acima de R$10.0000: ')
+        if ConsultaFaturamento == '1':
+            print(ConsultaGera.faturamentototal())
+            pass
+        elif ConsultaFaturamento == '2':
+            print(ConsultaGera.faturamento10k())
+            Import = input('Importar para uma planilha Excel externa? (1) Sim | (2) Não: ')
+            if Import == '1':
+                NomeArquivo = input('Nome arquivo: ')
+                NomePlanilha = input('Nome Planilha: ')
+                print('salvando...')
+                ConsultaGera.faturamento10k().to_excel(f'{NomeArquivo}.xlsx', sheet_name=NomePlanilha, index=False)
+            pass
+    elif Consulta == '2':
+        print(ConsultaGera.geratotal())
+        pass
+    elif Consulta == '3':
+        print(ConsultaGera.metam1())
+        pass
+    elif Consulta == '4':
+        print('Saindo do Gera...')
+        break
 
 
 
