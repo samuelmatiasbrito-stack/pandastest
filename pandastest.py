@@ -7,18 +7,19 @@ while True:
 '(1) Faturamento dos clientes | (2) Base Gera | (3) Metas M1 | (4) Sair: ')
     if Consulta == '1':
         ConsultaFaturamento = input('(1) Base Faturamento Geral \n' \
-        '(2) Base Faturamento acima de R$10.0000: ')
+        '(2) Base Faturamento valor filtrado: ')
         if ConsultaFaturamento == '1':
             print(ConsultaGera.obterfaturamento())
             pass
         elif ConsultaFaturamento == '2':
-            print(ConsultaGera.filtrarclientes10k())
-            Import = input('Importar para uma planilha Excel externa? (1) Sim | (2) Não: ')
-            if Import == '1':
+            FiltroFaturamento = int(input('Mínimo de faturamento: R$'))
+            print(ConsultaGera.filtrarfaturamento(FiltroFaturamento))
+            Export = input('Exportar para uma planilha Excel externa? (1) Sim | (2) Não: ')
+            if Export == '1':
                 NomeArquivo = input('Nome arquivo: ')
                 NomePlanilha = input('Nome Planilha: ')
                 print('salvando...')
-                ConsultaGera.filtrarclientes10k().to_excel(f'{NomeArquivo}.xlsx', sheet_name=NomePlanilha, index=False)
+                ConsultaGera.filtrarfaturamento().to_excel(f'{NomeArquivo}.xlsx', sheet_name=NomePlanilha, index=False)
             pass
     elif Consulta == '2':
         print(ConsultaGera.obtergera())

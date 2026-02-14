@@ -5,8 +5,8 @@ ClientesJaneiro = pd.read_excel('faturamentoclientes.xlsx')
 class Gera:
     def obterfaturamento(self):
         return ClientesJaneiro[['executivo', 'id cliente', 'faturamento total']]
-    def filtrarclientes10k(self):
-        return ClientesJaneiro[ClientesJaneiro['faturamento total'] > 10000]
+    def filtrarfaturamento(self, filtro):
+        return ClientesJaneiro[ClientesJaneiro['faturamento total'] > filtro]
     def obtergera(self):
         return PoloGeraJaneiro
     def obterm1(self):
