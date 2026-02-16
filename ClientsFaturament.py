@@ -12,6 +12,13 @@ class Gera:
         return self.gera
     def ObterM1(self):
         return self.gera[['executivo','nível', 'm1', 'm1 meta']]
-    def ObterExecutivos(self):
+    def EnumerarExecutivos(self):
         return '\n'.join([f'({i}) {executivo}' for i, executivo in enumerate(self.gera['executivo'], start=1)])
-    
+    def ObterExecutivo(self):
+        return list(self.gera['executivo'])
+    def ObterGeraExecutivo(self, ExecutivoEscolhido):
+        Ind = int(ExecutivoEscolhido) - 1
+        Executivo = self.ObterExecutivo()[Ind]
+        Filtrado = self.ObterGera()
+        return Filtrado[Filtrado['executivo'] == Executivo]
+

@@ -18,7 +18,16 @@ while True:
     elif Consulta == '2':
         FiltrarExecutivo = input('Deseja filtrar algum executivo? (1) Sim | (2) Não: ')
         if FiltrarExecutivo == '1':
-            print(ConsultaGera.ObterExecutivos())
+            print(ConsultaGera.EnumerarExecutivos())
+            ExecutivoEscolhido = input ('Número correspondente ao executivo: ')
+            if ExecutivoEscolhido.strip():
+                try:
+                    print(ConsultaGera.ObterGeraExecutivo(ExecutivoEscolhido))
+                except (ValueError, IndexError):
+                    print("Opção inválida.")
+            else:
+                print(ConsultaGera.ObterGera())
+
         elif FiltrarExecutivo == '2':
             print(ConsultaGera.ObterGera())
         pass
