@@ -1,5 +1,5 @@
 from ClientsFaturament import Gera
-ConsultaGera = Gera()
+ConsultaGera = Gera('faturamentoclientes.xlsx', 'polosaomiguel.xlsx')
 
 while True:
     Consulta = input('--Bem Vindo ao Gera-- \n'
@@ -19,8 +19,6 @@ while True:
         FiltrarExecutivo = input('Deseja filtrar algum executivo? (1) Sim | (2) Não: ')
         if FiltrarExecutivo == '1':
             print(ConsultaGera.ObterExecutivos())
-            
-
         elif FiltrarExecutivo == '2':
             print(ConsultaGera.ObterGera())
         pass

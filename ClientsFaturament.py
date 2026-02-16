@@ -1,6 +1,4 @@
 import pandas as pd
-PoloGeraJaneiro = pd.read_excel('polosaomiguel.xlsx')
-ClientesJaneiro = pd.read_excel('faturamentoclientes.xlsx')
 
 class Gera:
     def __init__(self, faturamento, gera):
@@ -9,11 +7,11 @@ class Gera:
     def LerArquivo(self,arquivo):
         return pd.read_excel(arquivo)
     def FiltrarFaturamento(self, filtro):
-        return ClientesJaneiro[ClientesJaneiro['faturamento total'] > filtro]
+        return self.faturamento[self.faturamento['faturamento total'] > filtro]
     def ObterGera(self):
-        return PoloGeraJaneiro
+        return self.gera
     def ObterM1(self):
-        return PoloGeraJaneiro[['executivo','nível', 'm1', 'm1 meta']]
+        return self.gera[['executivo','nível', 'm1', 'm1 meta']]
     def ObterExecutivos(self):
-        return '\n'.join([f'({i}) {executivo}' for i, executivo in enumerate(PoloGeraJaneiro['executivo'], start=1)])
+        return '\n'.join([f'({i}) {executivo}' for i, executivo in enumerate(self.gera['executivo'], start=1)])
     
